@@ -1,23 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxOsc.h"
-
-// listening port
-#define PORT 8000
-
-#define MAX_LINES 100
-
-class Line {
-public:
-  ofPoint a;
-  ofPoint b;
-};
+#include "pmLineTrace.h"
 
 class ofApp : public ofBaseApp{
-  deque<Line> lines;
-  ofxOscReceiver receiver;
-  ofPoint prevPoint;
+  pmPalette palette;
+  pmLineTrace lineTrace;
 
   public:
     void setup() override;
@@ -36,6 +24,4 @@ class ofApp : public ofBaseApp{
     void mouseExited(int x, int y) override;
     void windowResized(int w, int h) override;
     void dragEvent(ofDragInfo dragInfo) override;
-    void gotMessage(ofMessage msg) override;
-
 };
