@@ -114,7 +114,26 @@ void pmBorder::draw(){
     bounds.getHeight() - 2 * (width.x + distance)
   );
 
-  font.drawString(text, bounds.getLeft() + 20, bounds.getTop() + 20);
+  if (!text.empty()) {
+    ofSetColor(palette.getMain(0));
+    float centerX = bounds.getLeft() + (
+      bounds.getRight() - bounds.getLeft()
+    ) / 2;
+    ofDrawRectangle(
+      centerX - textBox.getWidth() / 2 - 4,
+      bounds.getTop(),
+      0,
+      textBox.getWidth() + 8,
+      textBox.getHeight()
+    );
+
+    ofSetColor(palette.getMain(1));
+    font.drawString(
+      text,
+      centerX - textBox.getWidth() / 2,
+      bounds.getTop() + font.getLineHeight() / 2
+    );
+  }
 }
 
 void pmBorder::setBounds(ofRectangle rect){
@@ -139,4 +158,5 @@ void pmBorder::setFont(ofTrueTypeFont f) {
 
 void pmBorder::setText(std::string s) {
   text = s;
+  textBox = font.getStringBoundingBox(s, 0, 0);
 }

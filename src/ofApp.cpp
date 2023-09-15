@@ -7,9 +7,9 @@ void ofApp::setup() {
   ofSetVerticalSync(true);
 
 	ofTrueTypeFont::setGlobalDpi(72);
-	font.load("FiraCode-Medium.ttf", 14);
-	font.setLineHeight(18.0f);
-	font.setLetterSpacing(1.037);
+	font.load("Moderat.otf", 18);
+	font.setLineHeight(24.0f);
+	font.setLetterSpacing(1.0);
 
   ofBackground(palette.getMain(0));
 

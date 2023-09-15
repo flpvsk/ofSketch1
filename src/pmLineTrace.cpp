@@ -54,7 +54,7 @@ void pmLineTrace::draw() {
       continue;
     }
     ofSetColor(palette.getMain(1.0));
-    ofSetLineWidth(1);
+    ofSetLineWidth(1.5);
     ofDrawLine(
       ofPoint(
         ofLerp(bounds.getLeft(), bounds.getRight(), prevPoint.x),

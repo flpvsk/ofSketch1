@@ -10,6 +10,7 @@ class pmBorder{
     float distance;
     ofTrueTypeFont font;
     std::string text;
+    ofRectangle textBox;
 
   public:
     pmBorder();
