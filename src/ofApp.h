@@ -2,10 +2,13 @@
 
 #include "ofMain.h"
 #include "pmLineTrace.h"
+#include "pmBorder.h"
 
 class ofApp : public ofBaseApp{
   pmPalette palette;
   pmLineTrace lineTrace;
+  pmBorder border;
+  ofTrueTypeFont font;
 
   public:
     void setup() override;

@@ -11,7 +11,7 @@ class pmPalette {
     return ofColor::fromHsb(
       0.,
       0.,
-      ofLerp(40, 255, 1. - f)
+      ofLerp(10, 255 - 60, 1. - f)
     );
   }
 };

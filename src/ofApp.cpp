@@ -5,14 +5,30 @@ void ofApp::setup() {
   ofSetWindowTitle("sketch1");
   ofSetFrameRate(24); // run at 60 fps
   ofSetVerticalSync(true);
+
+	ofTrueTypeFont::setGlobalDpi(72);
+	font.load("FiraCode-Medium.ttf", 14);
+	font.setLineHeight(18.0f);
+	font.setLetterSpacing(1.037);
+
   ofBackground(palette.getMain(0));
 
   lineTrace.setup();
   auto w = ofGetWidth();
   auto h = ofGetHeight();
-  lineTrace.setBounds(
-    ofRectangle(0.01 * w, 0.01 * h, 0.98 * w, 0.98 * h)
+  float pad = 0.1;
+  auto frame = ofRectangle(
+    pad * w,
+    pad * h,
+    (1 - 2 * pad) * w,
+    (1 - 2 * pad) * h
   );
+  lineTrace.setBounds(frame);
+  border.setBounds(frame);
+  border.setWidth(ofVec2f(4, 2));
+  border.setDistance(2);
+  border.setFont(font);
+  border.setText("Check border text");
 }
 
 //--------------------------------------------------------------
@@ -22,7 +38,11 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
+  // ofSetColor(255, 0, 0, 255);
+  // ofFill();
+  // ofDrawRectangle(0, 0, 0, ofGetWidth(), ofGetHeight());
   lineTrace.draw();
+  border.draw();
 }
 
 //--------------------------------------------------------------
