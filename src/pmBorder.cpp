@@ -47,7 +47,7 @@ void pmBorder::draw(){
   );
 
   // horizontal lines
-  ofSetColor(palette.getMain(1));
+  ofSetColor(palette.getMain(0.4));
 
   ofDrawRectangle(
     bounds.getLeft(),
@@ -115,23 +115,23 @@ void pmBorder::draw(){
   );
 
   if (!text.empty()) {
-    ofSetColor(palette.getMain(0));
+    ofSetColor(palette.getMain(0.4));
     float centerX = bounds.getLeft() + (
       bounds.getRight() - bounds.getLeft()
     ) / 2;
     ofDrawRectangle(
       centerX - textBox.getWidth() / 2 - 4,
-      bounds.getTop(),
+      bounds.getTop() - font.getLineHeight() * 0.35,
       0,
       textBox.getWidth() + 8,
-      textBox.getHeight()
+      textBox.getHeight() + font.getLineHeight() * 0.25
     );
 
-    ofSetColor(palette.getMain(1));
+    ofSetColor(palette.getMain(0.0));
     font.drawString(
       text,
       centerX - textBox.getWidth() / 2,
-      bounds.getTop() + font.getLineHeight() / 2
+      bounds.getTop() + font.getLineHeight() * 0.25
     );
   }
 }

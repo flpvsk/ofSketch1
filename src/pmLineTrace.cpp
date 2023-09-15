@@ -1,6 +1,7 @@
 #include "pmLineTrace.h"
 
 void pmLineTrace::setup(){
+  maxPoints = 400;
   // listen on the given port
   ofLog() << "listening for osc messages on port " << PORT;
   receiver.setup(PORT);
@@ -29,7 +30,7 @@ void pmLineTrace::update(){
 
       ofPoint pt = ofPoint(x, y);
 
-      while (points.size() >= MAX_POINTS) {
+      while (points.size() >= maxPoints) {
         points.pop_front();
       }
 
@@ -79,4 +80,8 @@ void pmLineTrace::setPalette(pmPalette newPalette){
 
 void pmLineTrace::setBounds(ofRectangle rect){
   bounds = rect;
+}
+
+void pmLineTrace::setMaxPoints(int p){
+  maxPoints = p;
 }

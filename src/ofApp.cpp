@@ -2,33 +2,83 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
+  padding = 8;
+
   ofSetWindowTitle("sketch1");
   ofSetFrameRate(24); // run at 60 fps
   ofSetVerticalSync(true);
 
 	ofTrueTypeFont::setGlobalDpi(72);
-	font.load("Moderat.otf", 18);
-	font.setLineHeight(24.0f);
-	font.setLetterSpacing(1.0);
+	fontBody.load("MorePerfectDOSVGA.ttf", 18);
+	fontBody.setLineHeight(24.0f);
+	fontBody.setLetterSpacing(1.0);
+
+	fontH2.load("MorePerfectDOSVGA.ttf", 40);
+	fontH2.setLineHeight(39.0f);
+	fontH2.setLetterSpacing(0.9);
+
+	fontH1.load("MorePerfectDOSVGA.ttf", 80);
+	fontH1.setLineHeight(78.0f);
+	fontH1.setLetterSpacing(1.0);
 
   ofBackground(palette.getMain(0));
 
   lineTrace.setup();
   auto w = ofGetWidth();
   auto h = ofGetHeight();
-  float pad = 0.1;
-  auto frame = ofRectangle(
-    pad * w,
-    pad * h,
-    (1 - 2 * pad) * w,
-    (1 - 2 * pad) * h
+
+  auto bottomLineFrame = ofRectangle(
+    padding,
+    h - fontBody.getLineHeight() * 2,
+    w - 2 * padding,
+    fontBody.getLineHeight() * 2
   );
-  lineTrace.setBounds(frame);
-  border.setBounds(frame);
-  border.setWidth(ofVec2f(4, 2));
-  border.setDistance(2);
-  border.setFont(font);
-  border.setText("Check border text");
+  auto lineTraceFrame = ofRectangle(
+    padding,
+    0.5 * h,
+    w - 2 * padding,
+    bottomLineFrame.getTop() - 0.5 * h
+  );
+  lineTrace.setBounds(lineTraceFrame);
+  lineTraceBorder.setBounds(lineTraceFrame);
+  lineTraceBorder.setPalette(palette);
+  lineTraceBorder.setWidth(ofVec2f(2, 1));
+  lineTraceBorder.setDistance(2);
+  lineTraceBorder.setFont(fontBody);
+  lineTraceBorder.setText("Sound of the shop");
+
+  bottomTextLineBorder.setBounds(bottomLineFrame);
+  bottomTextLineBorder.setWidth(ofVec2f(2, 1));
+  bottomTextLineBorder.setDistance(2);
+  bottomTextLineBorder.setPalette(palette);
+
+  bottomTextLine.setBounds(bottomLineFrame);
+  bottomTextLine.setFont(fontBody);
+  bottomTextLine.setText("pedalmarkt.com");
+  bottomTextLine.setColor(palette.getMain(-0.2));
+  bottomTextLine.setIsCenterHorizontal(true);
+  bottomTextLine.setIsCenterVertical(true);
+
+  auto dayOfWeekBounds = ofRectangle(
+    padding,
+    padding,
+    0.25 * (w - 2 * padding),
+    fontH1.getLineHeight()
+  );
+  dayOfWeekText.setBounds(dayOfWeekBounds);
+  dayOfWeekText.setColor(palette.getMain(1));
+  dayOfWeekText.setFont(fontH1);
+  dayOfWeekText.setText("FRI");
+
+  dayOfMonthText.setBounds(ofRectangle(
+    padding,
+    dayOfWeekBounds.getBottom() - 12,
+    0.25 * (w - 2 * padding),
+    fontH2.getLineHeight()
+  ));
+  dayOfMonthText.setColor(palette.getMain(0.6));
+  dayOfMonthText.setFont(fontH2);
+  dayOfMonthText.setText("Sep 15");
 }
 
 //--------------------------------------------------------------
@@ -41,8 +91,15 @@ void ofApp::draw() {
   // ofSetColor(255, 0, 0, 255);
   // ofFill();
   // ofDrawRectangle(0, 0, 0, ofGetWidth(), ofGetHeight());
+  dayOfWeekText.draw();
+  dayOfMonthText.draw();
+
   lineTrace.draw();
-  border.draw();
+  lineTraceBorder.draw();
+
+  bottomTextLine.draw();
+  // bottomTextLineBorder.draw();
+
 }
 
 //--------------------------------------------------------------

@@ -3,12 +3,25 @@
 #include "ofMain.h"
 #include "pmLineTrace.h"
 #include "pmBorder.h"
+#include "pmTextBox.h"
 
 class ofApp : public ofBaseApp{
   pmPalette palette;
+
   pmLineTrace lineTrace;
-  pmBorder border;
-  ofTrueTypeFont font;
+  pmBorder lineTraceBorder;
+
+  pmTextBox bottomTextLine;
+  pmBorder bottomTextLineBorder;
+
+  pmTextBox dayOfWeekText;
+  pmTextBox dayOfMonthText;
+
+  ofTrueTypeFont fontBody;
+  ofTrueTypeFont fontH1;
+  ofTrueTypeFont fontH2;
+
+  float padding;
 
   public:
     void setup() override;

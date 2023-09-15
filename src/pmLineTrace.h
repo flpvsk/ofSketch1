@@ -7,13 +7,13 @@
 // listening port
 #define PORT 8000
 
-#define MAX_POINTS 200
-
 class pmLineTrace : public ofBaseApp{
-  deque<ofPoint> points;
-  ofxOscReceiver receiver;
-  pmPalette palette;
-  ofRectangle bounds;
+  private:
+    deque<ofPoint> points;
+    ofxOscReceiver receiver;
+    pmPalette palette;
+    ofRectangle bounds;
+    int maxPoints;
 
   public:
     void setup() override;
@@ -23,4 +23,5 @@ class pmLineTrace : public ofBaseApp{
 
     void setPalette(pmPalette palette);
     void setBounds(ofRectangle rect);
+    void setMaxPoints(int maxPoints);
 };
