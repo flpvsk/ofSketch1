@@ -1,1 +1,2 @@
 ofxOsc
+ofxEasingFunc

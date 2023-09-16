@@ -13,7 +13,7 @@ void pmBorder::draw(){
   ofFill();
 
   // background frame
-  ofSetColor(palette.getMain(0));
+  ofSetColor(palette.getBg());
   ofDrawRectangle(
     bounds.getLeft(),
     bounds.getTop(),
@@ -127,7 +127,7 @@ void pmBorder::draw(){
       textBox.getHeight() + font.getLineHeight() * 0.25
     );
 
-    ofSetColor(palette.getMain(0.0));
+    ofSetColor(palette.getBg());
     font.drawString(
       text,
       centerX - textBox.getWidth() / 2,

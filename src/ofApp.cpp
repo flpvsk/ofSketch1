@@ -17,11 +17,11 @@ void ofApp::setup() {
 	fontH2.setLineHeight(39.0f);
 	fontH2.setLetterSpacing(0.9);
 
-	fontH1.load("MorePerfectDOSVGA.ttf", 80);
-	fontH1.setLineHeight(78.0f);
-	fontH1.setLetterSpacing(1.0);
+	fontH1.load("MorePerfectDOSVGA.ttf", 46);
+	fontH1.setLineHeight(48);
+	fontH1.setLetterSpacing(1);
 
-  ofBackground(palette.getMain(0));
+  ofBackground(palette.getBg());
 
   lineTrace.setup();
   auto w = ofGetWidth();
@@ -55,28 +55,40 @@ void ofApp::setup() {
   bottomTextLine.setBounds(bottomLineFrame);
   bottomTextLine.setFont(fontBody);
   bottomTextLine.setText("pedalmarkt.com");
-  bottomTextLine.setColor(palette.getMain(-0.2));
+  bottomTextLine.setColor(palette.getMain(0));
   bottomTextLine.setIsCenterHorizontal(true);
   bottomTextLine.setIsCenterVertical(true);
 
-  auto dayOfWeekBounds = ofRectangle(
+  auto timeOfDayTextBounds = ofRectangle(
     padding,
     padding,
     0.25 * (w - 2 * padding),
     fontH1.getLineHeight()
   );
-  dayOfWeekText.setBounds(dayOfWeekBounds);
-  dayOfWeekText.setColor(palette.getMain(1));
-  dayOfWeekText.setFont(fontH1);
-  dayOfWeekText.setText("FRI");
+  timeOfDayText.setBounds(timeOfDayTextBounds);
+  timeOfDayText.setColor(palette.getMain(1.0));
+  timeOfDayText.setFont(fontH1);
+  timeOfDayText.setText("14:21");
 
-  dayOfMonthText.setBounds(ofRectangle(
+  auto dayOfWeekBounds = ofRectangle(
     padding,
-    dayOfWeekBounds.getBottom() - 12,
+    timeOfDayTextBounds.getBottom() - 14,
     0.25 * (w - 2 * padding),
     fontH2.getLineHeight()
-  ));
-  dayOfMonthText.setColor(palette.getMain(0.6));
+  );
+  dayOfWeekText.setBounds(dayOfWeekBounds);
+  dayOfWeekText.setColor(palette.getMain(0.4));
+  dayOfWeekText.setFont(fontH2);
+  dayOfWeekText.setText("FRIDAY");
+
+  auto dayOfMonthBounds = ofRectangle(
+    padding,
+    dayOfWeekBounds.getBottom() - 10,
+    0.25 * (w - 2 * padding),
+    fontH2.getLineHeight()
+  );
+  dayOfMonthText.setBounds(dayOfMonthBounds);
+  dayOfMonthText.setColor(palette.getMain(0.4));
   dayOfMonthText.setFont(fontH2);
   dayOfMonthText.setText("Sep 15");
 }
@@ -93,6 +105,7 @@ void ofApp::draw() {
   // ofDrawRectangle(0, 0, 0, ofGetWidth(), ofGetHeight());
   dayOfWeekText.draw();
   dayOfMonthText.draw();
+  timeOfDayText.draw();
 
   lineTrace.draw();
   lineTraceBorder.draw();

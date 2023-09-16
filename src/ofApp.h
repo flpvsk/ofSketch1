@@ -16,6 +16,7 @@ class ofApp : public ofBaseApp{
 
   pmTextBox dayOfWeekText;
   pmTextBox dayOfMonthText;
+  pmTextBox timeOfDayText;
 
   ofTrueTypeFont fontBody;
   ofTrueTypeFont fontH1;

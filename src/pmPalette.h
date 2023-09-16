@@ -3,6 +3,7 @@
 
 #include "ofColor.h"
 #include "ofMath.h"
+#include "ofxEasingFunc.h"
 
 class pmPalette {
  public:
@@ -11,7 +12,15 @@ class pmPalette {
     return ofColor::fromHsb(
       0.,
       0.,
-      ofLerp(10, 255 - 60, 1. - f)
+      ofLerp(0, 255, ofxEasingFunc::Cubic::easeIn(1. - f))
+    );
+  }
+
+  ofColor getBg() {
+    return ofColor::fromHsb(
+      0,
+      0,
+      255 - 60
     );
   }
 };
